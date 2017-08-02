@@ -1,6 +1,6 @@
 # What is Linear Models and Least Squares?
 
-For the [regression problem]({{site.baseurl}}/what/regression-problem/), the linear model, as its name implies, assumes a linear
+For the regression problem, the linear model, as its name implies, assumes a linear
 relationship. Given a vector of inputs 
 \\( X^T = (X_1, X_2,\ldots,X_p)\\), we predict the output 
 \\(Y\\) via the model
