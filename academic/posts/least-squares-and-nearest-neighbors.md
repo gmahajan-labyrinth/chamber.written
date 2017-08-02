@@ -33,18 +33,18 @@ param = inv(transpose(X)*X)*transpose(X)*Y;
 This is how nearest neighbors performs for k=10.
 
 ## Conclusion
-We can actually develop some theory that provides a framework for developing models such as those discussed informally so far. As discussed in another post, for squared error loss function, the regression function is \\[f(x)=E(Y|X=x)\\]
+We can actually develop some theory that provides a framework for developing models such as those discussed informally so far. As discussed in another post, for squared error loss function, the regression function is $$f(x)=E(Y|X=x)$$
 
 The nearest-neighbor methods attempt to directly implement this recipe using the training data. At each point \\(x\\), we might ask for the average of all those \\(y_is\\) with input \\(x_i=x\\). Since there is typically at most one observation at any point \\(x\\), we settle for 
-\\[\hat{f}(x)=Ave(y_i|x_i \in N_k(x))\\]
+$$\hat{f}(x)=Ave(y_i|x_i \in N_k(x))$$
 where \\("Ave"\\) denotes average, and \\(N_k(x)\\) is the neighborhood
 containing the \\(k\\) points in \\(T\\) closest to \\(x\\). Two approximations are happening here:
 * expectation is approximated by averaging over sample data;
 * conditioning at a point is related to conditioning on some region "close" to the target point  
 
-How does linear regression fit into this framework? The simplest explanation is that one assumes that the regression function \\(f(x)\\) is approximately linear in its arguments: \\[f(x) \approx x^T\beta\\]
+How does linear regression fit into this framework? The simplest explanation is that one assumes that the regression function \\(f(x)\\) is approximately linear in its arguments: $$f(x) \approx x^T\beta$$
 This is a model-based approach- we specify a model for the regression function. Plugging this linear model for \\(f(x)\\) into \\(EPE\\) and differentiating we can solve for \\(\beta\\) theoretically:
-\\[\beta = (E(XX^T))^{-1} E(XY)\\]
+$$\beta = (E(XX^T))^{-1} E(XY)$$
 Note we have not conditioned on \\(X\\); rather we have used our knowledge of the functional relationship to _pool_ over values of \\(X\\). The least squares solution amounts to replacing the expectation b averages overs the training data.
 
 So both \\(k\\)-nearest neighbors and least squares end up approximating
