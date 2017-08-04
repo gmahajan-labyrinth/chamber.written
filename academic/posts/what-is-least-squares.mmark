@@ -1,4 +1,11 @@
-# What is Linear Models and Least Squares?
++++
+date = "2017-08-01"
+draft = false
+tags = ["whatis"]
+title = "What is Linear Models and Least Squares?"
+math = false
+summary = "For the regression problem, the linear model, as its name implies, assumes a linear relationship."
++++ 
 
 For the regression problem, the linear model, as its name implies, assumes a linear
 relationship. Given a vector of inputs 

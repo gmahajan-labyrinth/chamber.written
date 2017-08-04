@@ -1,4 +1,11 @@
-# What is Nearest Neighbor Methods?
++++
+date = "2017-08-01"
+draft = false
+tags = ["whatis"]
+title = "What is Nearest Neighbor Methods?"
+math = false
+summary = "For the regression problem, nearest-neighbor methods use those observations in the training set \\(T\\) closest in input space to \\(x\\) for prediction."
++++ 
 
 For the regression problem, nearest-neighbor methods use those observations in 
 the training set \\(T\\) closest in input space to \\(x\\)

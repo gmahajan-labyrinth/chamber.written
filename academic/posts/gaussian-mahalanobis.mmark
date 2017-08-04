@@ -1,4 +1,11 @@
-# Gaussian Distribution and Mahalanobis Distance
++++
+date = "2016-08-01"
+draft = true
+tags = []
+title = "Gaussian Distribution and Mahalanobis Distance"
+math = false
+summary = "Some useful links"
++++
 
 http://journals1.scholarsportal.info/details/01697439/v50i0001/1_tmd.xml
 http://cs229.stanford.edu/section/gaussians.pdf

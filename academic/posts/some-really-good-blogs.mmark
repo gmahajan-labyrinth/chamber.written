@@ -1,4 +1,11 @@
-# Some really good blogs for PhD students
++++
+date = "2016-08-01"
+draft = true
+tags = ["tips"]
+title = "Some really good blogs for PhD students"
+math = false
+summary = "Some useful links"
++++
 
 http://getalifephd.blogspot.in/
 https://people.cs.umass.edu/~wallach/how_to_be_a_successful_phd_student.pdf

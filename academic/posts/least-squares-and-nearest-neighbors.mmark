@@ -1,6 +1,17 @@
-# From Least Squares to Nearest Neighbors
++++
+date = "2017-08-01"
+draft = false
+tags = ["regression"]
+title = "From Least Squares to Nearest Neighbors"
+math = true
++++
 
-Let's evaluate two simple but powerful prediction methods: the linear model fit by least squares and the \\(k\\)-nearest-neighbor prediction rule on a simple regression problem. We will see how the linear model makes huge assumptions about structure and yields stable but possibly inaccurate predictions. The method of \\(k\\)-nearest neighbors, however, makes very mild structural assumptions: its predictions are often accurate but can be unstable.
+In this post, we will evaluate two simple but powerful prediction methods: the linear model fit by least squares and the \\(k\\)-nearest-neighbor prediction rule on a simple regression problem.  
+[Link to code](https://github.com/gmahajanml/linear-to-nearest)   
+
+<!--more-->
+
+We will see how the linear model makes huge assumptions about structure and yields stable but possibly inaccurate predictions. The method of \\(k\\)-nearest neighbors, however, makes very mild structural assumptions: its predictions are often accurate but can be unstable.
 
 ## Training Data
 Consider the two possible scenarios:
@@ -12,25 +23,23 @@ Consider the two possible scenarios:
 We first create training data for \\(Y=1\\), denoted by \\(X_{pos}\\) and 
 \\(Y=-1\\), denoted by \\(X_{neg}\\).
 
-{% highlight matlab %}
-mu_pos = [2,3];
-mu_neg = [0,3];
-sigma = [1,1.5;1.5,3];
-X_pos = mvnrnd(mu_pos,sigma,100);
-X_neg = mvnrnd(mu_neg,sigma,100);
-{% endhighlight %}
+![](/img/linear_nearest/scenario1.png "Scenario 1")
+
+![](/img/linear_nearest/scenario2.png "Scenario 2")
 
 ## Results for Least Squares
 This is how least squares performs on both scenarios.
 
-{% highlight matlab %}
-X = [zeros(200,1)+1 [X_neg; X_pos]];
-Y = [zeros(100,1)-1;zeros(100,1)+1];
-param = inv(transpose(X)*X)*transpose(X)*Y;
-{% endhighlight %}
+![](/img/linear_nearest/scenario1_linear.png "Least squares on Scenario 1")
+
+![](/img/linear_nearest/scenario2_linear.png "Least squares on Scenario 2")
 
 ## Results for Nearest Neighbors
 This is how nearest neighbors performs for k=10.
+
+![](/img/linear_nearest/scenario1_nearest.png "Nearest Neighbors on Scenario 1")
+
+![](/img/linear_nearest/scenario2_nearest.png "Nearest Neighbors on Scenario 2")
 
 ## Conclusion
 We can actually develop some theory that provides a framework for developing models such as those discussed informally so far. As discussed in another post, for squared error loss function, the regression function is $$f(x)=E(Y|X=x)$$
@@ -42,9 +51,10 @@ containing the \\(k\\) points in \\(T\\) closest to \\(x\\). Two approximations 
 * expectation is approximated by averaging over sample data;
 * conditioning at a point is related to conditioning on some region "close" to the target point  
 
-How does linear regression fit into this framework? The simplest explanation is that one assumes that the regression function \\(f(x)\\) is approximately linear in its arguments: $$f(x) \approx x^T\beta$$
+How does linear regression fit into this framework? The simplest explanation is that one assumes that the regression function \\(f(x)\\) is approximately linear in its arguments: $$f(x) \approx x^T\beta$$.
 This is a model-based approach- we specify a model for the regression function. Plugging this linear model for \\(f(x)\\) into \\(EPE\\) and differentiating we can solve for \\(\beta\\) theoretically:
-$$\beta = (E(XX^T))^{-1} E(XY)$$
+$$\beta = (E(XX^T))^{-1} E(XY)$$.  
+
 Note we have not conditioned on \\(X\\); rather we have used our knowledge of the functional relationship to _pool_ over values of \\(X\\). The least squares solution amounts to replacing the expectation b averages overs the training data.
 
 So both \\(k\\)-nearest neighbors and least squares end up approximating
